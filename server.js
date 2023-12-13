@@ -4,7 +4,7 @@ const { MongoClient } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const uri = 'mongodb+srv://prinuvinod:<password>@cluster0.qp044fw.mongodb.net/?retryWrites=true&w=majority'; // Replace with your MongoDB connection string
+const uri = 'mongodb+srv://prinuvinod:BlahBlah123@cluster0.qp044fw.mongodb.net/?retryWrites=true&w=majority'; // Replace with your MongoDB connection string
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let db;
