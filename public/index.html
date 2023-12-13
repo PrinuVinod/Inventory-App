@@ -120,7 +120,7 @@
         result.items.forEach(item => {
           itemList.innerHTML += `
             <p>${item.itemname} - Quantity: ${item.quantity}
-            <button onclick="deleteItem(${item.itemId})">Delete</button></p>`;
+            <button onclick="deleteItem('${item._id}')">Delete</button></p>`;
         });
       } catch (error) {
         console.error('Error fetching items:', error);
