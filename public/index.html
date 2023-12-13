@@ -71,7 +71,7 @@
 
 
       try {
-        const response = await fetch('https://karthikanivas.vercel.app/addItem', {
+        const response = await fetch('/addItem', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -92,7 +92,7 @@
 
     async function deleteItem(itemId) {
       try {
-        const response = await fetch(`https://karthikanivas.vercel.app/deleteItem/${itemId}`, {
+        const response = await fetch(`/deleteItem/${itemId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -112,7 +112,7 @@
 
     async function fetchItems() {
   try {
-    const response = await fetch('https://karthikanivas.vercel.app/getItems');
+    const response = await fetch('/getItems');
     const result = await response.json();
 
     const tableBody = document.getElementById('tableBody');

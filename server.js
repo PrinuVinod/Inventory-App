@@ -1,9 +1,10 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 mongoose.connect('mongodb+srv://prinuvinod:BlahBlah123@cluster0.qp044fw.mongodb.net/Cluster0?retryWrites=true&w=majority', {
   useNewUrlParser: true,
