@@ -56,7 +56,7 @@ app.delete('/deleteItem/:itemId', async (req, res) => {
 });
 
 // Route to get all items
-app.get('/getItems', async (req, res) => {
+app.post('/getItems', async (req, res) => {
   try {
     const items = await Inventory.find();
     res.json({ items });
