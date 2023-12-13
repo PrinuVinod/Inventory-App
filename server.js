@@ -1,8 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
+// Enable CORS
+app.use(cors());
 
 // Create a database and a table
 const db = new sqlite3.Database('inventory.db');
