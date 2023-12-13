@@ -112,7 +112,7 @@
 
     async function fetchItems() {
   try {
-    const response = await fetch('/getItems');
+    const response = await fetch('https://karthikanivas.vercel.app/getItems');
     const result = await response.json();
 
     const tableBody = document.getElementById('tableBody');
