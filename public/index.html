@@ -14,7 +14,8 @@
   <form id="addItemForm">
     <label for="items">Select Item:</label>
     <select id="items" name="items">
-        <option value="">No Item</option>
+      <option value="">No Item</option>
+      <option value="">No Item</option>
         <option value="Big Banana">Big Banana</option>
         <option value="Bread">Bread</option>
         <option value="Curd">Curd</option>
@@ -32,7 +33,8 @@
 
     <label for="quantity">Select Quantity:</label>
     <select id="quantity" name="quantity">
-        <option value="">No Quantity</option>
+      <option value="">No Quantity</option>
+      <option value="">No Quantity</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -50,8 +52,8 @@
   <hr>
 
   <div id="itemList">
-    <h2 style="text-align-last: center;">List</h2>
-    <table>
+    <h2>Inventory List</h2>
+    <table id="inventoryTable">
       <thead>
         <tr>
           <th>Item Name</th>
@@ -60,10 +62,10 @@
         </tr>
       </thead>
       <tbody id="tableBody">
+        <!-- Inventory items will be inserted here -->
       </tbody>
     </table>
   </div>
-
   <script>
     async function addItem() {
       const selectedItem = document.getElementById('items').value;
@@ -110,23 +112,38 @@
     }
 
     async function fetchItems() {
-      try {
-        const response = await fetch('/getItems');
-        const result = await response.json();
+  try {
+    const response = await fetch('/getItems');
+    const result = await response.json();
 
-        const itemList = document.getElementById('itemList');
-        itemList.innerHTML = '<h2>Inventory List</h2>';
+    const tableBody = document.getElementById('tableBody');
+    tableBody.innerHTML = ''; // Clear existing content
 
-        result.items.forEach(item => {
-          itemList.innerHTML += `
-            <p>${item.itemname} - Quantity: ${item.quantity}
-            <button onclick="deleteItem('${item._id}')">Delete</button></p>`;
-        });
-      } catch (error) {
-        console.error('Error fetching items:', error);
-        alert('Error fetching items. Please try again.');
-      }
-    }
+    result.items.forEach(item => {
+      const row = document.createElement('tr');
+
+      const itemNameCell = document.createElement('td');
+      itemNameCell.textContent = item.itemname;
+      row.appendChild(itemNameCell);
+
+      const quantityCell = document.createElement('td');
+      quantityCell.textContent = item.quantity;
+      row.appendChild(quantityCell);
+
+      const deleteCell = document.createElement('td');
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.onclick = () => deleteItem(item._id);
+      deleteCell.appendChild(deleteButton);
+      row.appendChild(deleteCell);
+
+      tableBody.appendChild(row);
+    });
+  } catch (error) {
+    console.error('Error fetching items:', error);
+    alert('Error fetching items. Please try again.');
+  }
+}
 
     fetchItems();
   </script>
