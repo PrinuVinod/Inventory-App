@@ -7,13 +7,15 @@ Uses MongoDB Atlas free Database
 ## Installation
 In the project Root Directory:
 ```
-$ npm i express mongoos
+npm i express mongoos
 ```
 
 # How to Run in Local Devices
 in gitbash Terminal:<br>
-npm start <br>
-or <br>
-node index.js <br>
-
+```
+npm start
+```
+```
+node index.js
+```
 It will run in localhost port 3000 or the port you specify in dotenv file.
