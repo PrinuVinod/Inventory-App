@@ -15,9 +15,11 @@ npm i express mongoos dotenv
 <br>
 # How to Run in Local Devices<br>
 in gitbash Terminal:<br>
+
 ```
 npm start
 ```
+
 ```
 node index.js
 ```
