@@ -4,6 +4,12 @@ A Web-App designed to show you the Essential Items you might forget to get. This
 # Database
 Uses MongoDB Atlas free Database
 
+## Installation
+In the project Root Directory:
+```
+$ npm i express mongoos
+```
+
 # How to Run in Local Devices
 in gitbash Terminal:<br>
 npm start <br>
