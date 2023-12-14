@@ -4,12 +4,17 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
-mongoose.connect('mongodb+srv://prinuvinod:BlahBlah123@cluster0.qp044fw.mongodb.net/Cluster0?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_CONNECT_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+// mongoose.connect('mongodb+srv://prinuvinod:BlahBlah123@cluster0.qp044fw.mongodb.net/Cluster0?retryWrites=true&w=majority', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
