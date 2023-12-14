@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 mongoose.connect('mongodb+srv://prinuvinod:BlahBlah123@cluster0.qp044fw.mongodb.net/Cluster0?retryWrites=true&w=majority', {
   useNewUrlParser: true,
@@ -56,7 +56,7 @@ app.delete('/deleteItem/:itemId', async (req, res) => {
 });
 
 // Route to get all items
-app.get('/blah/getItems', async (req, res) => {
+app.get('/getItems', async (req, res) => {
   try {
     const items = await Inventory.find();
     res.json({ items });
