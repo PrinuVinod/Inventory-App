@@ -7,7 +7,10 @@ Uses MongoDB Atlas free Database
 ## Installation
 In the project Root Directory:
 ```
-npm i express mongoos
+npm init -y
+```
+```
+npm i express mongoos dotenv
 ```
 
 # How to Run in Local Devices
