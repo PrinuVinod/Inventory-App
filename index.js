@@ -30,6 +30,7 @@ app.use(express.json());
 const inventorySchema = new mongoose.Schema({
   itemname: String,
   quantity: Number,
+  unit: String, // Add 'unit' field to the schema
 });
 
 // Create a model based on the schema
@@ -38,8 +39,8 @@ const Inventory = mongoose.model('Inventory', inventorySchema);
 // Route to add an item
 app.post('/addItem', async (req, res) => {
   try {
-    const { itemname, quantity } = req.body;
-    const newItem = new Inventory({ itemname, quantity });
+    const { itemname, quantity, unit } = req.body;
+    const newItem = new Inventory({ itemname, quantity, unit });
     await newItem.save();
     res.json({ message: 'Item added successfully!' });
   } catch (error) {
