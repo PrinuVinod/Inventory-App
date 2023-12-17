@@ -27,6 +27,6 @@ node index.js
 It will run in localhost port 3000 or the port you specify in dotenv file.
 <br>
 
-<!-- add this variable in Cyclic while hosting -->
+<!-- Add this variable in Cyclic while hosting -->
 <!-- Key: MONGODB_CONNECT_URI -->
 <!-- Value: mongodb+srv://prinuvinod:BlahBlah123@cluster0.qp044fw.mongodb.net/?retryWrites=true&w=majority -->
