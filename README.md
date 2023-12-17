@@ -7,10 +7,13 @@ Uses MongoDB Atlas free Database<br>
 ## Installation
 In the project Root Directory:<br>
 ```
+node install npm
+```
+```
 npm init -y
 ```
 ```
-npm i express mongoos dotenv
+npm i express mongoose dotenv
 ```
 <br>
 
