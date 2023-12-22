@@ -36,6 +36,11 @@ const inventorySchema = new mongoose.Schema({
 // Create a model based on the schema
 const Inventory = mongoose.model('Inventory', inventorySchema);
 
+// Service Worker registration
+app.get('/service-worker.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'PWA', 'service-worker.js'));
+});
+
 // Route to add an item
 app.post('/addItem', async (req, res) => {
   try {
