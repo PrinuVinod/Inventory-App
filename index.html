@@ -118,7 +118,6 @@
         body: JSON.stringify({ itemname: selectedItem, quantity: selectedQuantity, unit: selectedUnit }),
       });
       const result = await response.json();
-      // alert(result.message);
       await fetchItems();
     }
     catch (error) {
@@ -136,7 +135,6 @@
         },
       });
       const result = await response.json();
-      // alert(result.message);
       await fetchItems();
     }
     catch (error) {
@@ -150,7 +148,7 @@
       const response = await fetch('/getItems');
       const result = await response.json();
       const tableBody = document.getElementById('tableBody');
-      tableBody.innerHTML = ''; // Clear existing content
+      tableBody.innerHTML = '';
       result.items.forEach(item => {
         const row = document.createElement('tr');
         const itemNameCell = document.createElement('td');

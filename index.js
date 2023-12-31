@@ -4,17 +4,17 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGODB_CONNECT_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-// mongoose.connect('mongodb+srv://prinuvinod:BlahBlah123@cluster0.qp044fw.mongodb.net/Cluster0?retryWrites=true&w=majority', {
+// mongoose.connect(process.env.MONGODB_CONNECT_URI, {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 // });
+
+mongoose.connect('mongodb+srv://prinuvinod:BlahBlah123@cluster0.qp044fw.mongodb.net/?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -30,18 +30,15 @@ app.use(express.json());
 const inventorySchema = new mongoose.Schema({
   itemname: String,
   quantity: Number,
-  unit: String, // Add 'unit' field to the schema
+  unit: String,
 });
 
-// Create a model based on the schema
 const Inventory = mongoose.model('Inventory', inventorySchema);
 
-// Service Worker registration
 app.get('/service-worker.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'PWA', 'service-worker.js'));
 });
 
-// Route to add an item
 app.post('/addItem', async (req, res) => {
   try {
     const { itemname, quantity, unit } = req.body;
@@ -54,7 +51,6 @@ app.post('/addItem', async (req, res) => {
   }
 });
 
-// Route to delete an item
 app.delete('/deleteItem/:itemId', async (req, res) => {
   try {
     const { itemId } = req.params;
@@ -66,7 +62,6 @@ app.delete('/deleteItem/:itemId', async (req, res) => {
   }
 });
 
-// Route to get all items
 app.get('/getItems', async (req, res) => {
   try {
     const items = await Inventory.find();
