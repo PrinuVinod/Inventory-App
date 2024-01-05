@@ -6,15 +6,15 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// mongoose.connect(process.env.MONGODB_CONNECT_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-
-mongoose.connect('mongodb+srv://prinuvinod:BlahBlah123@cluster0.qp044fw.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_CONNECT_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+// mongoose.connect('mongodb+srv://prinuvinod:BlahBlah123@cluster0.qp044fw.mongodb.net/?retryWrites=true&w=majority', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -26,7 +26,6 @@ app.use(express.static(__dirname));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Define the schema for the inventory item
 const inventorySchema = new mongoose.Schema({
   itemname: String,
   quantity: Number,
