@@ -7,22 +7,12 @@ Uses MongoDB Atlas free Database<br>
 ## Installation
 In the project Root Directory:<br>
 ```
-node install npm
-```
-```
-npm init -y
-```
-```
 npm i express mongoose dotenv
 ```
 <br>
 
 # How to Run in Local Devices<br>
 in gitbash Terminal:<br>
-
-```
-npm start
-```
 
 ```
 node index.js
